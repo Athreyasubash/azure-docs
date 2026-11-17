@@ -66,6 +66,18 @@ It's difficult to identify which SID or volume is causing the problem in a scena
 - During the installation of the SAP PAS Instance, SWPM/SAPInst asks to input a transport hostname. The FQDN of the storage account should be entered `<storage_account>.file.core.windows.net` or with IP address/hostname of the private endpoint, if used.
 - When you integrate the active directory domain with Azure Files SMB for [SAP high availability deployment](high-availability-guide-windows-azure-files-smb.md), the SAP users and groups must be added to the `sapmnt` share. The SAP users should have permission `Storage File Data SMB Share Elevated Contributor` set in the Azure portal.
 
+## Database backup considerations
+
+<!-- DRAFT: SAP-on-Azure and Azure Files owners must approve this support clarification before publication. This section does not expand the supported SAP scenarios in this article. -->
+
+Using a file share for database backup files is a different scenario from using it for active database data or log files. Support for SAP application directories or `/hana/shared` doesn't establish support for a SAP HANA backup repository on Azure Files.
+
+The SAP DBMS support restriction in this article remains unchanged. Don't interpret NFS connectivity as confirmation that a HANA backup-target configuration is supported. Confirm the support position for the database version, operating system, storage service, protocol, and deployment topology before implementing a backup repository.
+
+For general repository planning, SQL Server examples, and SAP HANA support considerations, see [Use Azure Files as a database backup target](/azure/storage/files/database-backup-workloads). This guidance isn't a HANA-to-Azure-Files deployment procedure.
+
+For a documented NFS storage design that includes HANA backup and log-backup volumes, see [SAP HANA configuration with Azure NetApp Files](hana-vm-operations-netapp.md). Azure NetApp Files is a different storage service; its support guidance doesn't apply to Azure Files. For HANA protection through Backint, see [Back up SAP HANA databases in Azure VMs](/azure/backup/tutorial-backup-sap-hana-db).
+
 ## Next steps
 
 - [Azure Storage types for SAP workload](planning-guide-storage.md)

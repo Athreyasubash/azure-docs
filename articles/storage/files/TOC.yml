@@ -241,6 +241,8 @@
     href: files-monitoring-alerts.md
 - name: Workloads
   items:
+  - name: Database backup targets
+    href: database-backup-workloads.md
   - name: Virtual desktops
     href: virtual-desktop-workloads.md
     items:
